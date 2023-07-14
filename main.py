@@ -11,6 +11,8 @@ for index, row in df.iterrows():    #this will give us access to each row in dat
     pdf.set_text_color(254, 0, 0)   # this is for red
     pdf.cell(w=0, h=12, txt=row["Topic"], align="L", border=0, ln=1)
     pdf.line(x1=10, y1=20, x2=200, y2=20)
+    for i in range(row["Pages"] - 1):   # "Pages" is int type so to make it iterable we use range func
+        pdf.add_page()                  # -1 because we've already added one page above
 
 
 pdf.output("output.pdf")
